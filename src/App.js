@@ -20,7 +20,11 @@ function Copyright() {
 }
 
 const App = () => {
-  const [merchants, setMerchants] = useState(false);
+  const [merchants, setMerchants] = useState([]);
+
+  useEffect(() => {
+    console.log("The Merchants Full Data is: " + merchants);
+  });
 
   useEffect(() => {
     getMerchant();
@@ -57,7 +61,7 @@ const App = () => {
 
   function deleteMerchant() {
     let id = prompt('Enter merchant id');
-    fetch(`http://localhost:3001/merchants/${id}`, {
+    fetch(`http://localhost:3001/merchants/1`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -78,7 +82,7 @@ const App = () => {
         <ProTip />
         <Copyright />
         <div>
-          {merchants ? "Data is here" : 'There is no merchant data available'}
+          {(merchants.length !== 0) ? "Data is here" : 'There is no merchant data available'}
           <br />
           <Button variant={"contained"} onClick={createMerchant}>Add merchant</Button>
           <br />
