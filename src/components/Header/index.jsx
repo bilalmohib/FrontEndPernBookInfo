@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['View/Edit Books', 'View/Edit Students', 'ADD Books', 'ADD Students', 'View/Edit Books', 'View/Edit Students', 'ADD Books', 'ADD Students'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = () => {
@@ -36,10 +36,10 @@ const Header = () => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="sticky" color='secondary'>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
                     <Typography
                         variant="h6"
                         noWrap
@@ -55,7 +55,7 @@ const Header = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        PERN
+                        PERN Stack
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

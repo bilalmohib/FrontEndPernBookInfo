@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import { Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 
 //Importing Components
 import Header from '../../components/Header';
@@ -12,9 +12,9 @@ function Copyright() {
     return (
         <Typography variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://github.com/Muhammad-Bilal-7896">
+            <a style={{ color: "blue", textDecoration: "none" }} href="https://github.com/Muhammad-Bilal-7896">
                 Muhammad Bilal
-            </Link>{' '}
+            </a>{' '}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
@@ -86,8 +86,12 @@ const Home = () => {
                     </Typography>
 
                     <Box component={"section"} display={"flex"} flexDirection={"row"} justifyContent={"space-evenly"}>
-                        <Button variant="contained" color="warning" size={"large"}>View/Edit Book's Data</Button>
-                        <Button variant="contained" color="secondary" size={"large"}>View/Edit Student's Data</Button>
+                        <Link style={{ textDecoration: "none" }} to="/book">
+                            <Button variant="contained" color="warning" size={"large"}>View/Edit Book's Data</Button>
+                        </Link>
+                        <Link style={{ textDecoration: "none" }} to="/student">
+                            <Button variant="contained" color="secondary" size={"large"}>View/Edit Student's Data</Button>
+                        </Link>
                     </Box>
 
                     <br />
@@ -99,8 +103,12 @@ const Home = () => {
                     </Typography>
 
                     <Box component={"section"} display={"flex"} flexDirection={"row"} justifyContent={"space-evenly"}>
-                        <Button variant="contained" color="info" size={"large"}>ADD Book's Data</Button>
-                        <Button variant="contained" color="success" size={"large"}>ADD Student's Data</Button>
+                        <Link style={{ textDecoration: "none" }} to="/addbook">
+                            <Button variant="contained" color="info" size={"large"}>ADD Book's Data</Button>
+                        </Link>
+                        <Link style={{ textDecoration: "none" }} to="/addstudent">
+                            <Button variant="contained" color="success" size={"large"}>ADD Student's Data</Button>
+                        </Link>
                     </Box>
 
                     <br />
