@@ -78,23 +78,38 @@ const Home = () => {
     return (
         <>
             <Header />
+            <img src="/cover.jpg" alt="Cover" width={"100%"} height={"300px"} />
             <Container maxWidth="lg">
                 <Box sx={{ my: 4 }}>
                     <Typography variant="h4" component="h1" gutterBottom>
-                        PERN STACK Application
+                        PERN STACK Application |  <Typography variant="inherit" color={"orange"} component="span" gutterBottom>Select The Data You want to View/Edit</Typography>
                     </Typography>
-                    <div>
-                        <br />
-                        <Button variant={"contained"} onClick={createMerchant}>Add merchant</Button>
-                        <br />
-                        <Button variant={"outlined"} color="error" onClick={deleteMerchant}>Delete merchant</Button>
-                    </div>
+
+                    <Box component={"section"} display={"flex"} flexDirection={"row"} justifyContent={"space-evenly"}>
+                        <Button variant="contained" color="warning" size={"large"}>View/Edit Book's Data</Button>
+                        <Button variant="contained" color="secondary" size={"large"}>View/Edit Student's Data</Button>
+                    </Box>
 
                     <br />
+                    <hr />
+                    <br />
 
-                    <Copyright />
+                    <Typography variant="h4" component="h1" gutterBottom>
+                        PERN STACK Application | <Typography variant="inherit" color={"darkgreen"} component="span" gutterBottom>Select The Data You want to ADD</Typography>
+                    </Typography>
+
+                    <Box component={"section"} display={"flex"} flexDirection={"row"} justifyContent={"space-evenly"}>
+                        <Button variant="contained" color="info" size={"large"}>ADD Book's Data</Button>
+                        <Button variant="contained" color="success" size={"large"}>ADD Student's Data</Button>
+                    </Box>
+
+                    <br />
                 </Box>
             </Container>
+            <hr />
+            <br />
+            <Copyright />
+            <br />
         </>
     );
 }

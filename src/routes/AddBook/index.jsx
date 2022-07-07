@@ -23,10 +23,16 @@ function Copyright() {
 }
 
 const AddBook = () => {
-    const [merchants, setMerchants] = useState([]);
+    const [book, setBook] = useState(null);
+
+    const [book_name, setBookName] = useState('');
+    const [book_author, setBookAuthor] = useState('');
+    const [book_borrowed_by, setBookBorrowedBy] = useState('');
+    const [book_borrowed_date, setBookBorrowedDate] = useState('');
+    const [book_return_date, setBookReturnDate] = useState('');
 
     useEffect(() => {
-        console.log("The Merchants Full Data is: " + merchants);
+        console.log("All Books Are Listed As Follows : " + book);
     });
 
     // useEffect(() => {
@@ -114,11 +120,11 @@ const AddBook = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    "book_name": "Atomic Habits",
-                    "author": "Forgot",
-                    "borrowed_by": "Bilal Mohib",
-                    "borrowed_date": "2010-10-25",
-                    "return_date": "2021-02-05"
+                    "book_name": book_name,
+                    "author": book_author,
+                    "borrowed_by": book_borrowed_by,
+                    "borrowed_date": book_borrowed_date,
+                    "return_date": book_return_date
                 }),
             }
             const response = await fetch(url, config)
@@ -126,6 +132,13 @@ const AddBook = () => {
             if (response.ok) {
                 //return json
                 alert("Book Added to Cloud");
+                //Reset the form
+                setBookName('');
+                setBookAuthor('');
+                setBookBorrowedBy('');
+                setBookBorrowedDate('');
+                setBookReturnDate('');
+                //Reset the form
                 return response
             } else {
                 //
@@ -149,34 +162,51 @@ const AddBook = () => {
                         <form onSubmit={addBookToCloud}>
                             <FormControl fullWidth={true}>
                                 <Box component={'section'} mt={2}>
-                                    <Typography id="name" fontSize={"25px"}>Please enter book name <Typography variant="inherit" color={"red"} fontSize={"20px"} component="span">*</Typography></Typography>
-                                    <Input id="name" autoComplete='Starting Out With C++ ....' placeholder='Enter a book name here please eg: Starting Out With C++ From Control Structres ....' autoFocus={true} required={true} type={"text"} aria-describedby="name" fullWidth={true} />
+                                    <Typography id="bookname" fontSize={"25px"}>Please enter book name <Typography variant="inherit" color={"red"} fontSize={"20px"} component="span">*</Typography></Typography>
+                                    <Input id="bookname" value={book_name} onChange={(e) => setBookName(e.target.value)} autoComplete='Starting Out With C++ ....' placeholder='Enter a book name here please eg: Starting Out With C++ From Control Structres ....' autoFocus={true} required={true} type={"text"} fullWidth={true} />
                                 </Box>
                                 <Box component={'section'} mt={2}>
                                     <Typography id="author" fontSize={"25px"}>Please enter author name <Typography variant="inherit" color={"red"} fontSize={"20px"} component="span">*</Typography></Typography>
-                                    <Input id="author" autoComplete='Tonny Gaddis' placeholder='Enter a author name here please eg: Tonny Gaddis' autoFocus={false} required={true} type={"text"} aria-describedby="name" fullWidth={true} />
+                                    <Input id="author" value={book_author} onChange={(e) => setBookAuthor(e.target.value)} autoComplete='Tonny Gaddis' placeholder='Enter a author name here please eg: Tonny Gaddis' autoFocus={false} required={true} type={"text"} aria-describedby="name" fullWidth={true} />
                                 </Box>
                                 <Box component={'section'} mt={2}>
-                                    <Typography id="name" fontSize={"25px"}>Borrowed By: <Typography variant="inherit" color={"green"} fontSize={"20px"} component="span">(Optional)</Typography></Typography>
-                                    <Input id="name" autoComplete='bilal' placeholder='Bilal Mohib ...' autoFocus={false} required={true} type={"text"} aria-describedby="name" fullWidth={true} />
+                                    <Typography id="borrowedBy" fontSize={"25px"}>Borrowed By: <Typography variant="inherit" color={"green"} fontSize={"20px"} component="span">(Optional)</Typography></Typography>
+                                    <Input id="borrowedBy" value={book_borrowed_by} onChange={(e) => setBookBorrowedBy(e.target.value)} autoComplete='bilal' placeholder='Bilal Mohib ...' autoFocus={false} type={"text"} aria-describedby="name" fullWidth={true} />
                                 </Box>
                                 <Box component={'section'} mt={2}>
                                     <Typography id="name" fontSize={"25px"}>Borrow Date <Typography variant="inherit" color={"red"} fontSize={"20px"} component="span">*</Typography></Typography>
-                                    <Input id="name" autoComplete='2022-4-21' placeholder='YY-MM-DD eg: 2019-01-21' autoFocus={false} required={true} type={"text"} aria-describedby="name" fullWidth={true} />
+                                    <Input id="name" value={book_borrowed_date} onChange={(e) => setBookBorrowedDate(e.target.value)} autoComplete='2022-4-21' placeholder='YY-MM-DD eg: 2019-01-21' autoFocus={false} required={true} type={"text"} aria-describedby="name" fullWidth={true} />
                                 </Box>
                                 <Box component={'section'} mt={2}>
                                     <Typography id="name" fontSize={"25px"}>Return Date <Typography variant="inherit" color={"red"} fontSize={"20px"} component="span">*</Typography></Typography>
-                                    <Input id="name" autoComplete='2022-4-21' placeholder='YY-MM-DD eg: 2022-07-30' autoFocus={false} required={true} type={"text"} aria-describedby="name" fullWidth={true} />
+                                    <Input id="name" value={book_return_date} onChange={(e) => setBookReturnDate(e.target.value)} autoComplete='2022-4-21' placeholder='YY-MM-DD eg: 2022-07-30' autoFocus={false} required={true} type={"text"} aria-describedby="name" fullWidth={true} />
                                 </Box>
 
                                 <Box component={'section'} mt={2}>
-                                    <Button
-                                        type="submit"
-                                        variant="contained"
-                                        color="primary"
-                                    >
-                                        Add Book
-                                    </Button>
+                                    {(book_name !== "" && book_author !== "" && book_borrowed_date !== "" && book_return_date !== "") ? (
+                                        <>
+                                            <Typography variant="inherit" color={"green"} fontSize={"20px"} component="p" mb={2}>You are now ready to Add Book to the Store</Typography>
+                                            <Button
+                                                type="submit"
+                                                variant="contained"
+                                                color="primary"
+                                            >
+                                                Add Book
+                                            </Button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Typography mb={2} variant="inherit" color={"red"} fontSize={"20px"} component="p">Please fill all the fields with * sign to submit</Typography>
+                                            <Button
+                                                disabled={true}
+                                                type="submit"
+                                                variant="contained"
+                                                color="primary"
+                                            >
+                                                Add Book
+                                            </Button>
+                                        </>
+                                    )}
                                 </Box>
                             </FormControl>
                         </form>
