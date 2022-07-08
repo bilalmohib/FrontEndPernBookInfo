@@ -16,20 +16,20 @@ import { Link } from 'react-router-dom';
 
 const pages = [
     {
-        page:'View/Edit Books',
-        moveTo:'/book',
+        page: 'View/Edit Books',
+        moveTo: '/book',
     },
     {
-        page:'View/Edit Students',
-        moveTo:'/student',
+        page: 'View/Edit Students',
+        moveTo: '/student',
     },
     {
-        page:'Add Books',
-        moveTo:'/addbook',
+        page: 'Add Books',
+        moveTo: '/addbook',
     },
     {
-        page:'Add Students',
-        moveTo:'/addstudent',
+        page: 'Add Students',
+        moveTo: '/addstudent',
     }
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -155,7 +155,7 @@ const Header = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt="Muhammad Bilal" src="https://media-exp2.licdn.com/dms/image/D4D35AQGUZHpq5EnnVA/profile-framedphoto-shrink_200_200/0/1656647188500?e=1657872000&v=beta&t=JWYcduqYk2PSRQ9XZFZToL9htYnblT-a2eiQrkK_Rx4" />
                             </IconButton>
                         </Tooltip>
                         <Menu
