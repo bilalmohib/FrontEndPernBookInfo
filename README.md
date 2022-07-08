@@ -2,43 +2,32 @@
 
 ## How to use
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+Download the Repo [or clone the repo](https://github.com/Muhammad-Bilal-7896/FrontEndPernBookInfo):
 
 <!-- #default-branch-switch -->
 
 ```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app
-cd create-react-app
+git clone https://github.com/Muhammad-Bilal-7896/FrontEndPernBookInfo
 ```
 
+## Getting Started
 Install it and run:
 
 ```sh
 npm install
 npm start
 ```
+You also need to clone the backend and make it run on port 8080 to work with this front end.To make the backend work, instructions can be found in the 
+[Backend README.md]([README.md](https://github.com/Muhammad-Bilal-7896/BackEndPernBookInfo/blob/master/README.md))
 
-or:
-
-<!-- #default-branch-switch -->
-
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/create-react-app)
+## The idea behind the bookInfo
 
 <!-- #default-branch-switch -->
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/create-react-app)
-
-## The idea behind the example
-
-<!-- #default-branch-switch -->
-
-This example demonstrates how you can use [Create React App](https://github.com/facebookincubator/create-react-app).
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
-If you prefer, you can [use styled-components instead](https://mui.com/material-ui/guides/interoperability/#styled-components).
+This is a Book Info app front end that uses and works along with the [backend api](https://github.com/Muhammad-Bilal-7896/BackEndPernBookInfo) that uses postgree sql as a database to perform CRUD operations. As a whole it is called a Pern Book Info app that is build upon PERN(postgree,Express,React,Node) Stack.
 
 ## What's next?
 
 <!-- #default-branch-switch -->
 
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+You can also host the app on your own server. You will need to deploy the [backend](https://github.com/Muhammad-Bilal-7896/BackEndPernBookInfo) also to [Heruko](https://www.heroku.com/) or other cloud provider like [Google Cloud](https://cloud.google.com/),[Amazon Cloud](https://aws.amazon.com/),etc.
