@@ -10,6 +10,7 @@ import Home from "../routes/Home/index.jsx";
 import Expenses from "../routes/Expenses/index.jsx";
 import Invoices from '../routes/Invoices/index.jsx';
 import AddBook from '../routes/AddBook/index.jsx';
+import Book from '../routes/Book/index.jsx';
 
 const AppRouter = () => {
     return (
@@ -19,6 +20,7 @@ const AppRouter = () => {
                 <Route path="/expenses" element={<Expenses />} />
                 <Route path="/invoices" element={<Invoices />} />
                 <Route path="/addbook" element={<AddBook />} />
+                <Route path="/book" element={<Book />} />
             </Routes>
         </BrowserRouter>
     )
