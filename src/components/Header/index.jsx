@@ -12,8 +12,26 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from 'react-router-dom';
 
-const pages = ['View/Edit Books', 'View/Edit Students', 'ADD Books', 'ADD Students', 'View/Edit Books', 'View/Edit Students', 'ADD Books', 'ADD Students'];
+const pages = [
+    {
+        page:'View/Edit Books',
+        moveTo:'/book',
+    },
+    {
+        page:'View/Edit Students',
+        moveTo:'/student',
+    },
+    {
+        page:'Add Books',
+        moveTo:'/addbook',
+    },
+    {
+        page:'Add Students',
+        moveTo:'/addstudent',
+    }
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = () => {
@@ -87,9 +105,14 @@ const Header = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                            {pages.map((v, i) => (
+                                <MenuItem key={i}>
+                                    <Link
+                                        style={{ textDecoration: 'none', color: 'inherit' }}
+                                        to={v.moveTo}
+                                    >
+                                        <Typography textAlign="center">{v.page}</Typography>
+                                    </Link>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -111,16 +134,20 @@ const Header = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        PERN Stack
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        {pages.map((v, i) => (
                             <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
+                                key={i}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                <Link
+                                    to={v.moveTo}
+                                    style={{ textDecoration: 'none', color: 'inherit' }}
+                                >
+                                    {v.page}
+                                </Link>
                             </Button>
                         ))}
                     </Box>
