@@ -9,32 +9,33 @@ import { Link } from 'react-router-dom';
 
 //Importing Components
 import Header from '../../components/Header';
-import BookList from '../../components/Book/BookList';
+import StudentList from '../../components/Student/StudentList';
 import Copyright from '../../components/Copyright';
 
-const Book = () => {
-    const [book, setBook] = useState([]);
+const Student = () => {
+    const [student, setStudent] = useState([]);
     const [status, setStatus] = useState(false);
 
     useEffect(() => {
-        console.log("The All Books Data is ==> ", book);
+        console.log("The All Students Data is ==> ", student);
     });
 
     useEffect(() => {
-        getBooks();
+        getStudents();
     }, []);
 
-    function getBooks() {
-        fetch('http://localhost:8080/book')
+    function getStudents() {
+        fetch('http://localhost:8080/student')
             .then(response => {
                 return response.text();
             })
             .then(data => {
                 let parsedData = JSON.parse(data);
-                setBook(parsedData);
+                console.log("The Parsed Student Data is ==> ", parsedData);
+                setStudent(parsedData);
                 setStatus(true);
             }).catch(err => {
-                console.log("Error While Fetching Book Table Data ==>", err);
+                console.log("Error While Fetching Student Table Data ==>", err);
             });
     }
 
@@ -45,24 +46,24 @@ const Book = () => {
             <Container maxWidth="lg">
                 <Box sx={{ my: 4 }}>
                     <Typography variant="h4" component="h1" gutterBottom>
-                        PERN STACK Application |  <Typography variant="inherit" color={"cadetblue"} component="span" gutterBottom>You can View/Edit or Delete the Books Data here</Typography>
+                        PERN STACK Application |  <Typography variant="inherit" color={"lightgreen"} component="span" gutterBottom>View/Edit or Delete the Students Data here</Typography>
                     </Typography>
 
                     {(status) ? (
                         <>
                             {
-                                book.map((v, i) => {
+                                student.map((v, i) => {
                                     return (
                                         <Box key={i}>
-                                            <BookList
+                                            <StudentList
                                                 id={v.id}
-                                                book_name={v.book_name}
-                                                author={v.author}
-                                                borrowed_by={v.borrowed_by}
-                                                borrowed_date={v.borrowed_date}
-                                                return_date={v.return_date}
-                                                book={book}
-                                                setBook={setBook}
+                                                //passing prop values to be displayed
+                                                first_name={v.first_name}
+                                                last_name={v.last_name}
+                                                profile_picture={v.profile_picture}
+                                                //passing student data to update it when an update is triggered
+                                                student={student}
+                                                setStudent={setStudent}
                                             />
                                         </Box>
                                     )
@@ -90,4 +91,4 @@ const Book = () => {
         </>
     );
 }
-export default Book;
+export default Student;

@@ -5,25 +5,14 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import { FormControl, InputLabel, Input, FormHelperText } from '@mui/material';
+import { useNavigate  } from "react-router-dom";
 
 //Importing Components
 import Header from '../../components/Header';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://github.com/Muhammad-Bilal-7896">
-                Muhammad Bilal
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from '../../components/Copyright';
 
 const AddBook = () => {
-    const [book, setBook] = useState(null);
+    const navigate = useNavigate();
 
     const [book_name, setBookName] = useState('');
     const [book_author, setBookAuthor] = useState('');
@@ -35,81 +24,10 @@ const AddBook = () => {
         console.log("All Books Are Listed As Follows : " + book);
     });
 
-    // useEffect(() => {
-    //     getMerchant();
-    // }, [merchants]);
-
-    // function getMerchant() {
-    //     fetch('http://localhost:3001/')
-    //         .then(response => {
-    //             return response.text();
-    //         })
-    //         .then(data => {
-    //             setMerchants(data);
-    //         });
-    // }
-
-    // function createMerchant() {
-    //     let name = prompt('Enter merchant name');
-    //     let email = prompt('Enter merchant email');
-    //     fetch('http://localhost:3001/merchants', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ name, email }),
-    //     })
-    //         .then(response => {
-    //             return response.text();
-    //         })
-    //         .then(data => {
-    //             alert(data);
-    //             getMerchant();
-    //         });
-    // }
-
-    // function deleteMerchant() {
-    //     let id = prompt('Enter merchant id');
-    //     fetch(`http://localhost:3001/merchants/1`, {
-    //         method: 'DELETE',
-    //     })
-    //         .then(response => {
-    //             return response.text();
-    //         })
-    //         .then(data => {
-    //             alert(data);
-    //             getMerchant();
-    //         });
-    // }
-
+    //For posting the book data to the server
     const addBookToCloud = async (event) => {
         // 👇️ prevent page refresh
         event.preventDefault();
-
-        //Adding the book to the cloud
-        // fetch('http://localhost:8080/book', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         "book_name": "Atomic Habits",
-        //         "author": "Forgot",
-        //         "borrowed_by": "Bilal Mohib",
-        //         "borrowed_date": "2010-10-25",
-        //         "return_date": "2021-02-05"
-        //     }),
-        // }).then(response => {
-        //     let txt = response.text()
-        //     console.log("Data after the values are posted are : ", txt);
-        //     return txt;
-        // }).then(data => {
-        //     alert("Book Added to Cloud");
-        //     console.log("Data after the values are posted are : ", data);
-        // }).catch(error => {
-        //     console.log("Error Posting the Books Data to Cloud ==> ", error);
-        // });
 
         try {
             let url = 'http://localhost:8080/book';
@@ -132,6 +50,7 @@ const AddBook = () => {
             if (response.ok) {
                 //return json
                 alert("Book Added to Cloud");
+                navigate('/book');
                 //Reset the form
                 setBookName('');
                 setBookAuthor('');
@@ -149,6 +68,7 @@ const AddBook = () => {
             console.log("Error Posting the Books Data to Cloud ==> ", error);
         }
     }
+    //For posting the book data to the server
 
     return (
         <>

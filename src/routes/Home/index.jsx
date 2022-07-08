@@ -7,19 +7,7 @@ import { Link } from 'react-router-dom';
 
 //Importing Components
 import Header from '../../components/Header';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center">
-            {'Copyright © '}
-            <a style={{ color: "blue", textDecoration: "none" }} href="https://github.com/Muhammad-Bilal-7896">
-                Muhammad Bilal
-            </a>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from '../../components/Copyright';
 
 const Home = () => {
     const [merchants, setMerchants] = useState([]);

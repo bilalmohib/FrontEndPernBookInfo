@@ -19,7 +19,6 @@ const BookList = (props) => {
     // book={book}
     // setBook={setBook}
 
-
     const [edit, setEdit] = useState(false);
 
     //For Editing Book Data
@@ -67,19 +66,6 @@ const BookList = (props) => {
             alert("Please enter some value to update");
         }
     }
-
-    // function deleteBook(id) {
-    //     fetch(`http://localhost:8080/book/${id}`, {
-    //         method: 'DELETE',
-    //     })
-    //         .then(response => {
-    //             return response.text();
-    //         })
-    //         .then(data => {
-    //             alert("Book Deleted Successfully With Id: " + id);
-    //             getBooks();
-    //         });
-    // }
 
     const deleteBook = async uniqueId => {
         if (window.confirm(`Are you sure you want to delete this book with id=${uniqueId}?`)) {
