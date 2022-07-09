@@ -151,7 +151,7 @@ const BookList = (props) => {
                             placeholder="borrowed date"
                             inputProps={{ style: { color: "white" } }}
                             type={"text"}
-                            value={currentBookBorrowedBy} onChange={(e) => setCurrentBookBorrowedBy(e.target.value)}
+                            value={currentBookBorrowedDate} onChange={(e) => setCurrentBookBorrowedDate(e.target.value)}
                             variant="standard"
                         />
                     </>

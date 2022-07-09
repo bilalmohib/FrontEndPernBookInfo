@@ -20,10 +20,6 @@ const AddBook = () => {
     const [book_borrowed_date, setBookBorrowedDate] = useState('');
     const [book_return_date, setBookReturnDate] = useState('');
 
-    useEffect(() => {
-        console.log("All Books Are Listed As Follows : " + book);
-    });
-
     //For posting the book data to the server
     const addBookToCloud = async (event) => {
         // 👇️ prevent page refresh
